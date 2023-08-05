@@ -129,6 +129,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+     'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
 }
+CSRF_TRUSTED_ORIGINS = [ #CSRF Failed: Origin checking failed 
+    'moz-extension://8f36ebf0-2cbf-4c46-8334-7d592d44af3a' 
+]
+
+
 

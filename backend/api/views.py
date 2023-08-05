@@ -4,6 +4,7 @@ from blog.models import Blog
 from django.contrib.auth.models import User
 from rest_framework.generics import  ListCreateAPIView, RetrieveAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import BasicAuthentication
 from .permissions import IsSuperuser, IsStaffOrReadOnly, IsAuthorOrReadOnly, IsSuperuserOrStaffReadOnly
 class ArticleList(ListCreateAPIView):
     #API endpoint 
@@ -20,6 +21,7 @@ class UserList(ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [ IsSuperuserOrStaffReadOnly]
+    # authentication_classes = [BasicAuthentication]
 
 class UserDetail(RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
