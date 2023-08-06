@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    'blog',
-    'api',
+    'blog.apps.BlogConfig',
+    'api.apps.ApiConfig',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -132,10 +133,13 @@ REST_FRAMEWORK = {
     ],
      'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+
     ],
 }
 CSRF_TRUSTED_ORIGINS = [ #CSRF Failed: Origin checking failed 
+    # 'chrome-extension:// . . . ',
     'moz-extension://8f36ebf0-2cbf-4c46-8334-7d592d44af3a' 
 ]
 

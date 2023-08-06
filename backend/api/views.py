@@ -28,3 +28,5 @@ class UserDetail(RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
     permission_classes = [ IsSuperuserOrStaffReadOnly]
    
+
+# 75eca57ab5e4914bef47625e3af2ce2f8786a1d4
