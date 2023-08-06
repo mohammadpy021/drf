@@ -6,6 +6,8 @@ from rest_framework.generics import  ListCreateAPIView, RetrieveAPIView, Retriev
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import BasicAuthentication
 from .permissions import IsSuperuser, IsStaffOrReadOnly, IsAuthorOrReadOnly, IsSuperuserOrStaffReadOnly
+from rest_framework.views import APIView
+from rest_framework.response import Response
 class ArticleList(ListCreateAPIView):
     #API endpoint 
     queryset = Blog.objects.all()
@@ -27,6 +29,12 @@ class UserDetail(RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [ IsSuperuserOrStaffReadOnly]
-   
 
-# 75eca57ab5e4914bef47625e3af2ce2f8786a1d4
+class RevokeToken(APIView):
+    def get(self, request, format=None):
+        """
+        Return a list of all users.
+        """
+        request.user.auth_token.delete()
+        #or request.auth.delete()
+        return Response({"message": "token revoked"})
