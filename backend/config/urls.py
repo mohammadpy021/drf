@@ -19,10 +19,10 @@ from django.urls import path, include, re_path
 from django.views.generic import TemplateView
 from dj_rest_auth.views import PasswordResetConfirmView
 # from rest_framework.authtoken.views import obtain_auth_token
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+# from rest_framework_simplejwt.views import (
+#     TokenObtainPairView,
+#     TokenRefreshView,
+# )
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -31,18 +31,18 @@ urlpatterns = [
     path('api/', include('api.urls')),
     # path('api/token-auth/', obtain_auth_token),
 
-    # path('api/dj-rest-auth/', include('dj_rest_auth.urls')),
-    # path(# this must be over the line below
-    #     'api/dj-rest-auth/registration/account-confirm-email/<key>/',
-    #     TemplateView.as_view(template_name="api/account_confirm_email.html"),
-    #     name='account_confirm_email',
-    # ),
-    # path('api/dj-rest-auth/registration/password/reset/confirm/<uidb64>/<token>/',
-    #       PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    # path('api/dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('api/dj-rest-auth/', include('dj_rest_auth.urls')),
+    path(# this must be over the line below
+        'api/dj-rest-auth/registration/account-confirm-email/<key>/',
+        TemplateView.as_view(template_name="api/account_confirm_email.html"),
+        name='account_confirm_email',
+    ),
+    path('api/dj-rest-auth/password/reset/confirm/<uidb64>/<token>/',
+          PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('api/dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
 
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  #JWT
+    # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'), #JWT
    
 
 ]

@@ -43,11 +43,11 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'rest_framework',
     'rest_framework.authtoken',
-    # 'dj_rest_auth',
-    # 'dj_rest_auth.registration',
-    # 'allauth',
-    # 'allauth.account',
-    # 'allauth.socialaccount',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     
 ]
 
@@ -143,7 +143,8 @@ REST_FRAMEWORK = {
         # 'rest_framework.authentication.BasicAuthentication',
         # 'rest_framework.authentication.SessionAuthentication',
         # 'rest_framework.authentication.TokenAuthentication',
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication', #JWT
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
 
     ],
 }
@@ -151,7 +152,11 @@ CSRF_TRUSTED_ORIGINS = [ #CSRF Failed: Origin checking failed
     # 'chrome-extension:// . . . ',
     'moz-extension://8f36ebf0-2cbf-4c46-8334-7d592d44af3a' 
 ]
-
+REST_AUTH = {
+    'USE_JWT': True,
+    'JWT_AUTH_COOKIE': 'access',
+    'JWT_AUTH_REFRESH_COOKIE': 'refresh',
+}
 
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
