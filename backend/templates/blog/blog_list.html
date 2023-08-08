@@ -1,0 +1,13 @@
+
+
+{% for article in object_list %}
+
+    {{article.title}}
+    <br>
+    {{article.description}}
+    {{article.publish}}
+    {{article.author}}
+    <hr>
+{% empty %}
+    there is no posts.
+{% endfor %}
