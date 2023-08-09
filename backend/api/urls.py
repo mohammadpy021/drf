@@ -22,8 +22,8 @@ from .views import (
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet,  basename='users')
-router.register(r'', ArticleViewSet, basename='articles')
-urlpatterns = router.urls
-# urlpatterns = [ 
-#     path('', include(router.urls))
-# ]
+router.register(r'articles', ArticleViewSet, basename='articles')
+# urlpatterns = router.urls
+urlpatterns = [ 
+    path('', include(router.urls)),
+]

@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    
+    'django_filters',           #djangofilterbackend
 ]
 
 MIDDLEWARE = [
@@ -148,6 +148,8 @@ REST_FRAMEWORK = {
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
 
     ],
+    'DEFAULT_FILTER_BACKENDS': 
+    ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 CSRF_TRUSTED_ORIGINS = [ #CSRF Failed: Origin checking failed 
     # 'chrome-extension:// . . . ',

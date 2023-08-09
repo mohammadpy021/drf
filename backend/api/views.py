@@ -7,17 +7,35 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import BasicAuthentication
 from .permissions import IsSuperuser, IsStaffOrReadOnly, IsAuthorOrReadOnly, IsSuperuserOrStaffReadOnly
 from rest_framework.viewsets import ModelViewSet
+from django.db.models import Q 
 # from rest_framework.views import APIView
 # from rest_framework.response import Response
 class ArticleViewSet(ModelViewSet):
     serializer_class = ArticleSerializer
     queryset = Blog.objects.all()
+    filterset_fields = ['status', "author", "author__username"]
+    #Custom Filter
+    # def get_queryset(self):
+    #     queryset = Blog.objects.all()
+    #     status = self.request.query_params.get('status') #self.request.GET.get(...)
+    #     author = self.request.query_params.get('author') 
+    #     if status is not None:
+    #         queryset = queryset.filter(status=status)
+    #     if author is not None :
+    #         try:
+    #             author = int(author)
+    #             queryset = queryset.filter(author=author)
+    #         except:
+    #             queryset = queryset.filter(author__username=author)
+    #     return queryset
+    
     def get_permissions(self):
         if self.action in ['list','create']:
             permission_classes = [IsStaffOrReadOnly]
         else:
             permission_classes = [IsStaffOrReadOnly, IsAuthorOrReadOnly ]
         return [permission() for permission in permission_classes]
+        
     
 # class ArticleList(ListCreateAPIView):
 #     #API endpoint 
