@@ -15,6 +15,8 @@ class ArticleViewSet(ModelViewSet):
     queryset = Blog.objects.all()
     search_fields = ['title', 'description', 'author__username']
     filterset_fields = ['status', "author", "author__username",]
+    ordering_fields = ['created_at', 'status']
+    ordering = ['-status','-created_at',]    #default ordering   #-status:show the status True first
     #Custom Filter
     # def get_queryset(self):
     #     queryset = Blog.objects.all()
