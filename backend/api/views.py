@@ -13,7 +13,8 @@ from django.db.models import Q
 class ArticleViewSet(ModelViewSet):
     serializer_class = ArticleSerializer
     queryset = Blog.objects.all()
-    filterset_fields = ['status', "author", "author__username"]
+    search_fields = ['title', 'description', 'author__username']
+    filterset_fields = ['status', "author", "author__username",]
     #Custom Filter
     # def get_queryset(self):
     #     queryset = Blog.objects.all()
