@@ -137,7 +137,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
+        'api.permissions.IsStaffOrReadOnly',            #custom permissions
     ],
      'DEFAULT_AUTHENTICATION_CLASSES': [
         # 'rest_framework.authentication.BasicAuthentication',
@@ -150,12 +151,12 @@ REST_FRAMEWORK = {
 }
 CSRF_TRUSTED_ORIGINS = [ #CSRF Failed: Origin checking failed 
     # 'chrome-extension:// . . . ',
-    'moz-extension://8f36ebf0-2cbf-4c46-8334-7d592d44af3a' 
+    'moz-extension://8f36ebf0-2cbf-4c46-8334-7d592d44af3a' ,
 ]
 REST_AUTH = {
     'USE_JWT': True,
-    'JWT_AUTH_COOKIE': 'access',
-    'JWT_AUTH_REFRESH_COOKIE': 'refresh',
+    'JWT_AUTH_COOKIE': 'access',            #{ ..., "access" : "HASH", ...}
+    'JWT_AUTH_REFRESH_COOKIE': 'refresh',   #{ ..., "refresh" : "HASH", ...}
 }
 
 
