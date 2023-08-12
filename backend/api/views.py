@@ -14,8 +14,8 @@ class ArticleViewSet(ModelViewSet):
     serializer_class = ArticleSerializer
     queryset = Blog.objects.all()
     search_fields = ['title', 'description', 'author__username']
-    filterset_fields = ['status', "author", "author__username",]
-    ordering_fields = ['created_at', 'status']
+    filterset_fields = ['status', "author", "author__username",] #settings.py:'rest_framework.filters.SearchFilter'
+    ordering_fields = ['created_at']
     ordering = ['-status','-created_at',]    #default ordering   #-status:show the status True first
     #Custom Filter
     # def get_queryset(self):

@@ -9,6 +9,7 @@ from .views import (
     UserViewSet,
     ArticleViewSet,
 )
+app_name = "api"
 # urlpatterns = [
 #     path('',ArticleList.as_view(), name="article-list" ),
 #     # path('<int:pk>',ArticleDetail.as_view(), name="article-detail" ),#.../api/ex:2
