@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
     'api.apps.ApiConfig',
+    'accounts.apps.AccountsConfig',
     'blog.apps.BlogConfig',
     'rest_framework',
     'rest_framework.authtoken',
@@ -166,3 +167,4 @@ REST_AUTH = {
 
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+AUTH_USER_MODEL = 'accounts.User'

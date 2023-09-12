@@ -26,5 +26,5 @@ router.register(r'users', UserViewSet,  basename='users')
 router.register(r'articles', ArticleViewSet, basename='articles')
 # urlpatterns = router.urls
 urlpatterns = [ 
-    path('', include(router.urls)),
+    path('v1/', include(router.urls)),
 ]
